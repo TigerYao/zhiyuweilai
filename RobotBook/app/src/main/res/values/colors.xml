@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="slide_1">#4f91ff</color>
+    <color name="slide_2">#fb9c25</color>
+    <color name="slide_3">#5ab55d</color>
+    <color name="slide_4">#ea2d6d</color>
+
+    <color name="tutorial_buttonTextColor">#000000</color>
+    <!--the common title bar start-->
+    <color name="common_header_statusbar_color">#2f9cf6</color>
+    <color name="common_header_statusbar_text_color">#282828</color>
+    <color name="common_background_color">#fff4f9ff</color>
+    <color name="common_color_white">#ffffffff</color>
+    <color name="common_color_white_translucent">#4cffffff</color>
+    <color name="common_content_title_text_color">@color/common_color_white</color>
+    <color name="common_btn_pressed_solid_color">#0d000000</color>
+    <color name="common_btn_pressed_stroke_color">#19ffffff</color>
+    <color name="common_btn_normal_stroke_color">#b2ffffff</color>
+    <color name="common_list_item_pressed_color">#e5e5e5</color>
+    <color name="common_list_item_divider_color">#e7e7e7</color>
+    <color name="common_list_item_text_color">#4d4d4d</color>
+    <!--the common title bar start-->
+
+    <color name="base_front">#fffefefe</color>
+    <color name="chat_alarm_red_text">#fffb473d</color>
+    <color name="base_back">#ff1b1818</color>
+    <color name="common_white_transparent_10">#19ffffff</color>
+    <color name="common_white_transparent_15">#21ffffff</color>
+    <color name="common_white_transparent_20">#33ffffff</color>
+    <color name="common_white_transparent_40">#66ffffff</color>
+    <color name="common_white_transparent_50">#7fffffff</color>
+    <color name="common_white_transparent_70">#b2ffffff</color>
+    <color name="common_white_transparent_80">#ccffffff</color>
+    <color name="common_black_transparent_20">#33000000</color>
+    <color name="common_black_transparent_40">#66000000</color>
+    <color name="common_black_transparent_50">#7f000000</color>
+    <color name="common_black_transparent_60">#99000000</color>
+    <color name="common_black_transparent_70">#b2000000</color>
+    <color name="common_green_transparent_50">#7f00b084</color>
+    <color name="common_green_transparent_70">#b200b084</color>
+    <color name="common_color_green">#ff00b084</color>
+    <color name="common_color_unenable">#ffd1d1d1</color>
+
+    <color name="anyshare_common_background_color">#fff6f9fa</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="clean_caches_text_color">#757575</color>
+    <color name="clean_caches_complete_text_color">#333333</color>
+    <color name="clean_caches_progress_finished_color">#2f9cf6</color>
+
+    <color name="anyshare_content_album_title_bg_pressed">#ffe7e7e7</color>
+    <color name="anyshare_content_album_title_bg_normal">#fff6f9fa</color>
+    <color name="anyshare_content_list_child_bg_normal">#ffffffff</color>
+
+    <color name="item_title_text_color">#282828</color>
+    <color name="item_category_text_color">#99576881</color>
+    <color name="common_mask_background_color">#b2000000</color>
+    <color name="common_content_view_normal_white_color">#ffffffff</color>
+
+    <color name="common_snap_record_blue">#58b2ff</color>
+
+    <color name="snap_edit_icon_select">#48a8ff</color>
+    <color name="snap_edit_icon_unselect">#cc576881</color>
+    <color name="snap_edit_item_select">#cc576881</color>
+    <color name="snap_edit_item_unselect">#80576881</color>
+</resources>
