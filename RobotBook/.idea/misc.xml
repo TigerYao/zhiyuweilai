@@ -5,7 +5,7 @@
     <option name="formatter" value="ECLIPSE" />
     <option name="id" value="1471229750890" />
     <option name="name" value="default" />
-    <option name="pathToConfigFileJava" value="$PROJECT_DIR$/../AnyShare.Eclipse.Formatter.2012.08.17(1).xml" />
+    <option name="pathToConfigFileJava" value="$USER_HOME$/UShareIt/AnyShare.Eclipse.Formatter.2012.08.17(1).xml" />
     <option name="selectedJavaProfile" value="AnyShareV2" />
   </component>
   <component name="EntryPointsManager">

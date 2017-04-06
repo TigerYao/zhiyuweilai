@@ -1,14 +1,19 @@
 package com.zhiyuweilai.tiger.robotbook.mainview;
 
+import com.zhiyuweilai.tiger.robotbook.R;
+import com.zhiyuweilai.tiger.robotbook.act.HomeActivity;
+import com.zhiyuweilai.tiger.robotbook.databinding.FragmentLoginBinding;
+import com.zhiyuweilai.tiger.robotbook.view.TitleBarView;
+
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.zhiyuweilai.tiger.robotbook.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,8 +32,8 @@ public class LoginFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     private OnFragmentInteractionListener mListener;
+    private FragmentLoginBinding loginBinding;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -63,23 +68,33 @@ public class LoginFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+            Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        loginBinding = DataBindingUtil.bind(view);
+        TitleBarView titleBarView = (TitleBarView)view.findViewById(R.id.titlebar);
+        titleBarView.setTitle(R.string.app_name);
+        loginBinding.inputLayout.addInputView(true, "用户名");
+        loginBinding.inputLayout.addInputView(true, "密码");
+        loginBinding.toLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), HomeActivity.class));
+                getActivity().finish();
+            }
+        });
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+            mListener = (OnFragmentInteractionListener)context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -104,6 +119,6 @@ public class LoginFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onDismiss();
     }
 }

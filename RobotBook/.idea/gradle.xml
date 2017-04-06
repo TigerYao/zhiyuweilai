@@ -10,6 +10,8 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/materialhelptutorial" />
+            <option value="$PROJECT_DIR$/robotpen" />
+            <option value="$PROJECT_DIR$/robotpen_sdk" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

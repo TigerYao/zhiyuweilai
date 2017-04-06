@@ -1,8 +1,94 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.zhiyuweilai.tiger.robotbook.mainview.LoginFragment">
-   <include layout="@layout/titlebar_view"/>
+<layout>
 
-</LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/common_color_white"
+        android:orientation="vertical"
+        tools:context="com.zhiyuweilai.tiger.robotbook.mainview.LoginFragment">
+
+        <com.zhiyuweilai.tiger.robotbook.view.TitleBarView
+            android:id="@+id/titlebar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/common_80" />
+
+
+        <TextView
+            android:id="@+id/title_seleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center|top"
+            android:gravity="center"
+            android:text="@string/login_select_fragment"
+            android:textColor="@color/base_back"
+            android:textSize="@dimen/common_text_size_20sp" />
+
+        <RadioGroup
+            android:id="@+id/radio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_seleted"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/common_10"
+                android:text="@string/student"
+                android:textColor="@color/base_back"
+                android:textSize="@dimen/common_text_size_20sp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/common_10"
+                android:text="@string/teacher"
+                android:textColor="@color/base_back"
+                android:textSize="@dimen/common_text_size_20sp" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/common_10"
+                android:text="@string/parent"
+                android:textColor="@color/base_back"
+                android:textSize="@dimen/common_text_size_20sp" />
+        </RadioGroup>
+
+        <com.zhiyuweilai.tiger.robotbook.view.InputViewLayout
+            android:id="@+id/input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/common_20"
+            android:paddingRight="@dimen/common_20"
+            android:layout_margin="@dimen/common_10"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/to_login"
+                android:layout_width="@dimen/common_160"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/common_20"
+                android:background="@drawable/input_bg"
+                android:text="@string/login_title_fragment"
+                android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/to_register"
+                android:layout_width="@dimen/common_160"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/common_20"
+                android:textColor="@color/colorPrimary"
+                android:background="@drawable/input_bg"
+                android:text="@string/register_title_fragment"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

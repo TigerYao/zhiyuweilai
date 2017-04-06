@@ -1,48 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical">
+<layout>
 
-    <ImageView
-        android:id="@+id/title_left_img"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:visibility="gone"
-        android:layout_centerVertical="true" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
 
-    <TextView
-        android:text="@string/app_name"
-        android:id="@+id/title_left_name"
-        style="@style/title_bar_text"
-        android:visibility="gone"
-        android:layout_toRightOf="@id/title_left_img" />
+        <ImageView
+            android:id="@+id/title_left_img"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
 
-    <TextView
-        android:text="@string/login_title_fragment"
-        android:id="@+id/title"
-        android:visibility="gone"
-        style="@style/title_bar_text"
-        android:layout_centerInParent="true" />
+        <TextView
+            android:id="@+id/title_left_name"
+            style="@style/title_bar_text"
+            android:layout_toRightOf="@id/title_left_img"
+            android:text="@string/app_name" />
 
-    <ImageView
-        android:id="@+id/title_right_img"
-        style="@style/title_bar_text"
-        android:visibility="gone"
-        android:layout_alignParentRight="true" />
+        <TextView
+            android:id="@+id/title"
+            style="@style/title_bar_text"
+            android:layout_centerInParent="true"
+            android:text="@string/login_title_fragment"
+            android:visibility="gone" />
 
-    <TextView
-        android:text="@string/device_state"
-        android:id="@+id/title_right_name1"
-        style="@style/title_bar_text"
-        android:visibility="gone"
-        android:layout_toLeftOf="@+id/title_right_img" />
+        <ImageView
+            android:id="@+id/title_right_img"
+            style="@style/title_bar_text"
+            android:layout_alignParentRight="true"
+            android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/title_right_name2"
-        android:text="@string/person_name"
-        style="@style/title_bar_text"
-        android:visibility="gone"
-        android:layout_toLeftOf="@id/title_right_name1" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/title_right_name1"
+            style="@style/title_bar_text"
+            android:layout_toLeftOf="@+id/title_right_img"
+            android:text="@string/device_state"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/title_right_name2"
+            style="@style/title_bar_text"
+            android:layout_toLeftOf="@id/title_right_name1"
+            android:text="@string/person_name"
+            android:visibility="gone" />
+    </RelativeLayout>
+</layout>

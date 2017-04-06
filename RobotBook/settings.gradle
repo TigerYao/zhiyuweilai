@@ -1,1 +1,1 @@
-include ':app', ':materialhelptutorial'
+include ':app', ':materialhelptutorial', ':robotpen', ':robotpen_sdk'

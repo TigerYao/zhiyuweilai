@@ -22,4 +22,17 @@
         <item name="android:layout_centerVertical">true</item>
         <item name="android:padding">@dimen/common_5</item>
     </style>
+
+    <style name="input_text">
+        <item name="android:textSize">@dimen/common_20</item>
+        <item name="android:textColor">@color/common_color_white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">@dimen/common_5</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

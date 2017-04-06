@@ -15,5 +15,16 @@
     <string name="person_name">个人姓名</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="login_title_fragment">登录</string>
-    <string name="login_select_fragment">您是:</string>
+    <string name="register_title_fragment">注册</string>
+    <string name="login_select_fragment">请选择您的身份</string>
+    <string name="student">学生</string>
+    <string name="teacher">老师</string>
+    <string name="parent">家长</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+
+    <string name="my_diary">我的日记</string>
+    <string name="my_article">我的文章</string>
+    <string name="my_class">班级动态</string>
+    <string name="bookcase">书架</string>
 </resources>

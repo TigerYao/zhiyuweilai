@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="edit"
+            type="java.lang.Boolean" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_90"
+        android:padding="@dimen/common_10">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/common_10"
+            android:background="@drawable/input_bg">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="@dimen/common_50"
+                android:layout_height="match_parent" />
+
+            <EditText
+                android:id="@+id/input_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:background="@null" />
+
+            <ImageView
+                android:id="@+id/delet"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </LinearLayout>
+</layout>

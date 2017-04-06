@@ -3,19 +3,21 @@ package com.zhiyuweilai.tiger.robotbook;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 
 import com.zhiyuweilai.tiger.robotbook.data.SettingsConfig;
+import com.zhiyuweilai.tiger.robotbook.mainview.LoginFragment;
 
 import java.util.ArrayList;
 
 import za.co.riggaroo.materialhelptutorial.TutorialItem;
 import za.co.riggaroo.materialhelptutorial.tutorial.MaterialTutorialActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity implements LoginFragment.OnFragmentInteractionListener{
     public static final int REQUEST_CODE = 1;
     public static final int REQUEST_LOGIN = 2;
+    private boolean isLogin = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,10 +26,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadTutorial() {
+        isLogin = SettingsConfig.getInstance(this).isLogin();
         if(SettingsConfig.getInstance(this).showGuidePage()) {
             Intent mainAct = new Intent(this, MaterialTutorialActivity.class);
             mainAct.putParcelableArrayListExtra(MaterialTutorialActivity.MATERIAL_TUTORIAL_ARG_TUTORIAL_ITEMS, getTutorialItems(this));
             startActivityForResult(mainAct, REQUEST_CODE);
+        }
+
+        if(!isLogin){
+            replaceFragment(LoginFragment.newInstance("",""));
+        }else{
+
         }
 
     }
@@ -56,12 +65,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //    super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE){
+        if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
             SettingsConfig.getInstance(this).isShowGuidePage(false);
-            Toast.makeText(this, "Tutorial finished", Toast.LENGTH_LONG).show();
-
         }
     }
 
+    private void replaceFragment(Fragment replaceFragment){
+        getSupportFragmentManager().beginTransaction().replace(R.id.activity_main,replaceFragment).commit();
+    }
 
+    @Override
+    public void onDismiss() {
+
+    }
 }

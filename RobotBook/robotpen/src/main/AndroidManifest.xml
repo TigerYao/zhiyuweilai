@@ -1,0 +1,53 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zhiyuweilai.tiger.robotpen">
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 蓝牙分享所需的权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="true" />
+    <application
+        android:name="cn.robotpen.act.RobotPenApplication"
+        android:allowBackup="true">
+        <activity
+            android:name="cn.robotpen.act.PenActivity"
+            android:screenOrientation="landscape"
+            android:label="@string/app_name">
+        </activity>
+
+        <!-- 注册服务 -->
+        <service
+            android:name="cn.robotpen.core.services.UsbPenService"
+            android:enabled="true" />
+        <service
+            android:name="cn.robotpen.core.services.SmartPenService"
+            android:enabled="true" />
+
+        <activity android:name="cn.robotpen.act.show.StartActivity" />
+        <activity android:name="cn.robotpen.act.connect.DeviceActivity" />
+        <activity android:name="cn.robotpen.act.show.SingleCanvasActivity" />
+        <activity android:name="cn.robotpen.act.connect.USBConnectActivity" />
+        <activity android:name="cn.robotpen.act.connect.BleConnectActivity" />
+        <activity android:name="cn.robotpen.act.show.SingleWithMethodActivity" />
+        <activity android:name="cn.robotpen.act.show.MulityCanvasActivity" />
+        <activity android:name="cn.robotpen.act.show.MulityWithMethodActivity" />
+        <activity android:name="cn.robotpen.act.show.NoteActivity" />
+        <activity android:name="cn.robotpen.act.show.ShowPointActivity"></activity>
+    </application>
+</manifest>
