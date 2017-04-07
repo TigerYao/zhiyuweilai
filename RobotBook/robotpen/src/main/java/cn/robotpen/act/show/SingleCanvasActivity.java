@@ -14,6 +14,7 @@ import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -57,7 +58,7 @@ public class SingleCanvasActivity extends Activity implements WhiteBoardView.Can
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_single_canvas);
+        singleCanvasBinding = DataBindingUtil.setContentView(this, R.layout.activity_single_canvas);
         mHandler = new Handler();
         mNoteManageModule = new NoteManageModule(this);
         initView();
