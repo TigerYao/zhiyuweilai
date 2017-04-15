@@ -51,4 +51,9 @@ public class TitleBarView extends FrameLayout {
         titlebarViewBinding.titleRightImg.setImageResource(id);
     }
 
+    public void setRightTitle(int id) {
+        titlebarViewBinding.titleRightName1.setVisibility(View.VISIBLE);
+        titlebarViewBinding.titleRightName1.setText(id);
+    }
+
 }

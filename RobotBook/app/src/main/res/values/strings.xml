@@ -11,7 +11,7 @@
     <string name="slide_4_different_languages_subtitle">English, Zulu, Afrikaans, Xhosa and more!</string>
 
     <string name="tutorial_done">完成</string>
-    <string name="device_state">设备状态:</string>
+    <string name="device_state">设备状态</string>
     <string name="person_name">个人姓名</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="login_title_fragment">登录</string>

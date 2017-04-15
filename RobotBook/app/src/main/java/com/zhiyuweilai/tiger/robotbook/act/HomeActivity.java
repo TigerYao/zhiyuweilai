@@ -8,7 +8,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
 
-import cn.robotpen.act.PenActivity;
+import cn.robotpen.act.connect.BleConnectActivity;
+import cn.robotpen.act.show.ShowPointActivity;
 
 public class HomeActivity extends BaseAcitivty {
     private ActivityHomeBinding mHomeBinding;
@@ -17,6 +18,7 @@ public class HomeActivity extends BaseAcitivty {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        mHomeBinding.titlebar.setRightTitle(R.string.device_state);
         mHomeBinding.tablayout.addTab(mHomeBinding.tablayout.newTab().setText(R.string.my_diary));
         mHomeBinding.tablayout.addTab(mHomeBinding.tablayout.newTab().setText(R.string.my_article));
         mHomeBinding.tablayout.addTab(mHomeBinding.tablayout.newTab().setText(R.string.my_class));
@@ -27,7 +29,13 @@ public class HomeActivity extends BaseAcitivty {
         mHomeBinding.floatActionbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeActivity.this, PenActivity.class));
+                startActivity(new Intent(HomeActivity.this, ShowPointActivity.class));
+            }
+        });
+        mHomeBinding.titlebar.titlebarViewBinding.titleRightName1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeActivity.this, BleConnectActivity.class));
             }
         });
     }

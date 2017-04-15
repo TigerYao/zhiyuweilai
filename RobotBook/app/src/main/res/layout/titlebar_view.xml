@@ -30,21 +30,22 @@
         <ImageView
             android:id="@+id/title_right_img"
             style="@style/title_bar_text"
-            android:layout_alignParentRight="true"
-            android:visibility="gone" />
+            android:visibility="invisible"
+            android:layout_alignParentRight="true" />
 
         <TextView
             android:id="@+id/title_right_name1"
             style="@style/title_bar_text"
             android:layout_toLeftOf="@+id/title_right_img"
             android:text="@string/device_state"
-            android:visibility="gone" />
+            android:visibility="gone"
+            android:gravity="left" />
 
         <TextView
             android:id="@+id/title_right_name2"
             style="@style/title_bar_text"
+            android:visibility="gone"
             android:layout_toLeftOf="@id/title_right_name1"
-            android:text="@string/person_name"
-            android:visibility="gone" />
+            android:text="@string/person_name"/>
     </RelativeLayout>
 </layout>

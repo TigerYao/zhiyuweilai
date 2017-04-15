@@ -3,6 +3,7 @@ package cn.robotpen.act.utils;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,6 +11,7 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -20,6 +22,8 @@ public class MyView extends View {
     private Path mPath = new Path();
     ArrayList<Path> mPaths = new ArrayList<Path>();
     ArrayList<Float> mStrokes = new ArrayList<Float>();
+
+    String sPointString = "";
 
     private float lastTouchX;
     private float lastTouchY;
@@ -79,43 +83,97 @@ public class MyView extends View {
     public void dowithWriteMove(float x, float y, float w) {
         float eventX = x;
         float eventY = y;
+
         variableWidthDelta = w;
 
-        mStrokes.add(variableWidthDelta);
-
-        targetStroke = variableWidthDelta;
+        // mStrokes.add(variableWidthDelta);
+        // targetStroke = variableWidthDelta;
 
         float dx = Math.abs(eventX - mX);
         float dy = Math.abs(eventY - mY);
 
         if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
             if (lastStroke != variableWidthDelta) {
-                mPath.lineTo(mX, mY);
+                mPath.quadTo(mX, mY, (eventX + mX) / 2, (eventY + mY) / 2);
+                mPaths.add(mPath);
+
+                String sPathPoint = "{\"x\":" + mX + ",\"y\":" + mY + "}]},";
+                sPointString = sPointString.concat(sPathPoint);
 
                 mPath = new Path();
                 mPath.moveTo(mX, mY);
-                mPaths.add(mPath);
+
+                sPathPoint = "{\"press\":" + w + ",\"xy\":[{\"x\":" + mX + ",\"y\":" + mY + "},";
+                sPointString = sPointString.concat(sPathPoint);
+
+                mStrokes.add(variableWidthDelta);
+                lastStroke = variableWidthDelta;
+            } else {
+                mPath.quadTo(mX, mY, (eventX + mX) / 2, (eventY + mY) / 2);
+
+                String sPathPoint = "{\"x\":" + mX + ",\"y\":" + mY + "},";
+                sPointString = sPointString.concat(sPathPoint);
             }
 
-            mPath.quadTo(mX, mY, (eventX + mX) / 2, (eventY + mY) / 2);
             mX = eventX;
             mY = eventY;
+        } else {
+
+            if (lastStroke != variableWidthDelta) {
+                mPath.lineTo(eventX, eventY);
+                mPaths.add(mPath);
+
+                String sPathPoint = "{\"x\":" + eventX + ",\"y\":" + eventY + "}]},";
+                sPointString = sPointString.concat(sPathPoint);
+
+                mPath = new Path();
+                mPath.moveTo(eventX, eventY);
+
+                sPathPoint = "{\"press\":" + w + ",\"xy\":[{\"x\":" + eventX + ",\"y\":" + eventY + "},";
+                sPointString = sPointString.concat(sPathPoint);
+
+                mStrokes.add(variableWidthDelta);
+                lastStroke = variableWidthDelta;
+            } else {
+                mPath.lineTo(eventX, eventY);
+
+                String sPathPoint = "{\"x\":" + eventX + ",\"y\":" + eventY + "},";
+                sPointString = sPointString.concat(sPathPoint);
+            }
+
+            mX = eventX;
+            mY = eventY;
+
         }
-        lastStroke = variableWidthDelta;
-        if (m_nInvalidateCount++ % 5 == 0)
+        // lastStroke = variableWidthDelta;
+        //if (m_nInvalidateCount++ % 5 == 0)
             invalidate();
     }
 
     public void dowithWriteUp() {
         mPath.lineTo(mX, mY);
+        mPaths.add(mPath);
+
+        String sPathPoint = "{\"x\":" + mX + ",\"y\":" + mY + "},{\"x\":" + -1 + ",\"y\":" + 0 + "}]},";
+        sPointString = sPointString.concat(sPathPoint);
+        Log.i("lxz", sPointString);
         invalidate();
     }
 
     public void dowithWriteDown(float x, float y, float w) {
         float eventX = x;
         float eventY = y;
+
+        variableWidthDelta = w;
+        mStrokes.add(variableWidthDelta);
+        lastStroke = variableWidthDelta;
+
+        String sPathPoint = "{\"press\":" + w + ",\"xy\":[{\"x\":" + x + ",\"y\":" + y + "},";
+        sPointString = sPointString.concat(sPathPoint);
+
         resetDirtyRect(eventX, eventY);
         mPath.moveTo(eventX, eventY);
+        mPath.lineTo(eventX, eventY + 1);
         mX = eventX;
         mY = eventY;
     }
@@ -125,96 +183,103 @@ public class MyView extends View {
         float eventX = event.getX();
         float eventY = event.getY();
         int historySize = event.getHistorySize();
-
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN: {
-                resetDirtyRect(eventX, eventY);
-                // mPath.reset();
-                mPath.moveTo(eventX, eventY);
-                mX = eventX;
-                mY = eventY;
-                break;
-            }
-            case MotionEvent.ACTION_MOVE: {
-                if (event.getPressure() >= 0.00 && event.getPressure() < 0.05) {
-                    variableWidthDelta = -2;
-                } else if (event.getPressure() >= 0.05 && event.getPressure() < 0.10) {
-                    variableWidthDelta = -2;
-                } else if (event.getPressure() >= 0.10 && event.getPressure() < 0.15) {
-                    variableWidthDelta = -2;
-                } else if (event.getPressure() >= 0.15 && event.getPressure() < 0.20) {
-                    variableWidthDelta = -2;
-                } else if (event.getPressure() >= 0.20 && event.getPressure() < 0.25) {
-                    variableWidthDelta = -2;
-                } else if (event.getPressure() >= 0.25 && event.getPressure() < 0.30) {
-                    variableWidthDelta = 1;
-                } else if (event.getPressure() >= 0.30 && event.getPressure() < 0.35) {
-                    variableWidthDelta = 2;
-                } else if (event.getPressure() >= 0.35 && event.getPressure() < 0.40) {
-                    variableWidthDelta = 3;
-                } else if (event.getPressure() >= 0.40 && event.getPressure() < 0.45) {
-                    variableWidthDelta = 4;
-                } else if (event.getPressure() >= 0.45 && event.getPressure() < 0.60) {
-                    variableWidthDelta = 5;
-                }
-
-                // if current not roughly equal to target
-                if (Math.abs(targetStroke - currentStroke) > STROKE_DELTA) {
-                    // move towards target by the increment
-                    if (targetStroke > currentStroke) {
-                        currentStroke = Math.min(targetStroke, currentStroke + STROKE_INCREMENT);
-                    } else {
-                        currentStroke = Math.max(targetStroke, currentStroke - STROKE_INCREMENT);
-                    }
-
-                }
-                mStrokes.add(currentStroke);
-
-                targetStroke = variableWidthDelta;
-
-                float dx = Math.abs(eventX - mX);
-                float dy = Math.abs(eventY - mY);
-
-                if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
-                    if (lastStroke != variableWidthDelta) {
-                        mPath.lineTo(mX, mY);
-
-                        mPath = new Path();
-                        mPath.moveTo(mX, mY);
-                        mPaths.add(mPath);
-                    }
-
-                    mPath.quadTo(mX, mY, (eventX + mX) / 2, (eventY + mY) / 2);
-                    mX = eventX;
-                    mY = eventY;
-                }
-
-                for (int i = 0; i < historySize; i++) {
-                    float historicalX = event.getHistoricalX(i);
-                    float historicalY = event.getHistoricalY(i);
-                    expandDirtyRect(historicalX, historicalY);
-                }
-                break;
-            }
-            case MotionEvent.ACTION_UP: {
-                for (int i = 0; i < historySize; i++) {
-                    float historicalX = event.getHistoricalX(i);
-                    float historicalY = event.getHistoricalY(i);
-                    expandDirtyRect(historicalX, historicalY);
-                }
-                mPath.lineTo(mX, mY);
-                break;
-            }
-        }
-
-        // Include half the stroke width to avoid clipping.
-        invalidate();
-
-        lastTouchX = eventX;
-        lastTouchY = eventY;
-        lastStroke = variableWidthDelta;
-
         return true;
+        // lxz
+        /*
+         * switch (event.getAction()) {
+         * case MotionEvent.ACTION_DOWN: {
+         * resetDirtyRect(eventX, eventY);
+         * // mPath.reset();
+         * mPath.moveTo(eventX, eventY);
+         * mX = eventX;
+         * mY = eventY;
+         * break;
+         * }
+         * case MotionEvent.ACTION_MOVE: {
+         * if (event.getPressure()>=0.00 && event.getPressure()<0.05) {
+         * variableWidthDelta = -2;
+         * } else if (event.getPressure()>=0.05 && event.getPressure()<0.10) {
+         * variableWidthDelta = -2;
+         * } else if (event.getPressure()>=0.10 && event.getPressure()<0.15) {
+         * variableWidthDelta = -2;
+         * } else if (event.getPressure()>=0.15 && event.getPressure()<0.20) {
+         * variableWidthDelta = -2;
+         * } else if (event.getPressure()>=0.20 && event.getPressure()<0.25) {
+         * variableWidthDelta = -2;
+         * } else if (event.getPressure() >= 0.25 && event.getPressure()<0.30) {
+         * variableWidthDelta = 1;
+         * } else if (event.getPressure() >= 0.30 && event.getPressure()<0.35) {
+         * variableWidthDelta = 2;
+         * } else if (event.getPressure() >= 0.35 && event.getPressure()<0.40) {
+         * variableWidthDelta = 3;
+         * } else if (event.getPressure() >= 0.40 && event.getPressure()<0.45) {
+         * variableWidthDelta = 4;
+         * } else if (event.getPressure() >= 0.45 && event.getPressure()<0.60) {
+         * variableWidthDelta = 5;
+         * }
+         * 
+         * // if current not roughly equal to target
+         * if( Math.abs(targetStroke - currentStroke) > STROKE_DELTA )
+         * {
+         * // move towards target by the increment
+         * if( targetStroke > currentStroke)
+         * {
+         * currentStroke = Math.min(targetStroke, currentStroke + STROKE_INCREMENT);
+         * }
+         * else
+         * {
+         * currentStroke = Math.max(targetStroke, currentStroke - STROKE_INCREMENT);
+         * }
+         * 
+         * }
+         * mStrokes.add(currentStroke);
+         * 
+         * targetStroke = variableWidthDelta;
+         * 
+         * float dx = Math.abs(eventX - mX);
+         * float dy = Math.abs(eventY - mY);
+         * 
+         * if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
+         * if(lastStroke != variableWidthDelta)
+         * {
+         * mPath.lineTo(mX, mY);
+         * 
+         * mPath = new Path();
+         * mPath.moveTo(mX,mY);
+         * mPaths.add(mPath);
+         * }
+         * 
+         * mPath.quadTo(mX, mY, (eventX + mX)/2, (eventY + mY)/2);
+         * mX = eventX;
+         * mY = eventY;
+         * }
+         * 
+         * for (int i = 0; i < historySize; i++) {
+         * float historicalX = event.getHistoricalX(i);
+         * float historicalY = event.getHistoricalY(i);
+         * expandDirtyRect(historicalX, historicalY);
+         * }
+         * break;
+         * }
+         * case MotionEvent.ACTION_UP: {
+         * for (int i = 0; i < historySize; i++) {
+         * float historicalX = event.getHistoricalX(i);
+         * float historicalY = event.getHistoricalY(i);
+         * expandDirtyRect(historicalX, historicalY);
+         * }
+         * mPath.lineTo(mX, mY);
+         * break;
+         * }
+         * }
+         * 
+         * // Include half the stroke width to avoid clipping.
+         * invalidate();
+         * 
+         * lastTouchX = eventX;
+         * lastTouchY = eventY;
+         * lastStroke = variableWidthDelta;
+         */
+        // return true;
     }
 
     private void expandDirtyRect(float historicalX, float historicalY) {
@@ -240,5 +305,15 @@ public class MyView extends View {
         dirtyRect.right = (int)Math.max(lastTouchX, eventX);
         dirtyRect.top = (int)Math.min(lastTouchY, eventY);
         dirtyRect.bottom = (int)Math.max(lastTouchY, eventY);
+    }
+
+    public Bitmap getBitmap() {
+        Bitmap bitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        if (bitmap == null)
+            return null;
+        Canvas canvas = new Canvas(bitmap);
+        draw(canvas);
+        canvas.save();
+        return bitmap;
     }
 }
