@@ -1,7 +1,10 @@
 package com.zhiyuweilai.tiger.robotbook.data;
 
+
 import java.io.IOException;
 
+import cn.robotpen.utils.MD5Util;
+import cn.robotpen.utils.TimeUtil;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -51,7 +54,6 @@ public class RetrofitUtils {
                                 .newBuilder()
                                 .addHeader("Content-Type", "application/json")
                                 .addHeader("Accept-Encoding", "gzip, deflate")
-                                .addHeader("Authorization", "Bearer"+token)
                                 .build();
 
                         return chain.proceed(request);
@@ -61,7 +63,4 @@ public class RetrofitUtils {
         return httpClient;
     }
 
-    public void setToken(String token) {
-        this.token = token;
-    }
 }
