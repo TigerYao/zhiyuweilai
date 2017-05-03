@@ -9,7 +9,7 @@
         android:id="@+id/id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ਨਿਜੀ ਸਕੂਲ ਅਤੇ ਮਾਪਿਆਂ ਵਿਚਾਲੇ ਵਧਿਆ ਵਿਵਾਦ, ਕਈ ਮਾਪਿਆਂ 'ਤੇ ਐੱਫ.ਆਈ.ਆਰ. ਦਰਜ"
+        android:text="标题标题标题标题标题"
         android:textColor="@color/common_black_transparent_60"
         android:textSize="@dimen/common_text_size_18sp"
         android:textAppearance="?attr/textAppearanceListItem" />

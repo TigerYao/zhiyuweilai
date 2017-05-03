@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RobotBook.iml" filepath="$PROJECT_DIR$/RobotBook.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/materialhelptutorial/materialhelptutorial.iml" filepath="$PROJECT_DIR$/materialhelptutorial/materialhelptutorial.iml" />
       <module fileurl="file://$PROJECT_DIR$/robotpen/robotpen.iml" filepath="$PROJECT_DIR$/robotpen/robotpen.iml" />
       <module fileurl="file://$PROJECT_DIR$/robotpen_sdk/robotpen_sdk.iml" filepath="$PROJECT_DIR$/robotpen_sdk/robotpen_sdk.iml" />
     </modules>

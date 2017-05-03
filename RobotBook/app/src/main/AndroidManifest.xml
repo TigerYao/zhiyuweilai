@@ -57,7 +57,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="za.co.riggaroo.materialhelptutorial.tutorial.MaterialTutorialActivity"
+            android:name="com.zhiyuweilai.tiger.robotbook.act.MaterialTutorialActivity"
             android:theme="@style/FullScreenTheme" />
         <activity
             android:name=".act.HomeActivity"
@@ -68,6 +68,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.zhiyuweilai.tiger.robotbook.act.BaseAcitivty" />
         </activity>
+        <activity android:name=".act.WebViewActivity"/>
         </application>
 
 </manifest>

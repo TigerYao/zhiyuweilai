@@ -6,13 +6,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
+import com.zhiyuweilai.tiger.robotbook.act.WebViewActivity;
 import com.zhiyuweilai.tiger.robotbook.data.SettingsConfig;
 import com.zhiyuweilai.tiger.robotbook.mainview.LoginFragment;
+import com.zhiyuweilai.tiger.robotbook.view.materialhelptutorial.TutorialItem;
+import com.zhiyuweilai.tiger.robotbook.act.MaterialTutorialActivity;
 
 import java.util.ArrayList;
 
-import za.co.riggaroo.materialhelptutorial.TutorialItem;
-import za.co.riggaroo.materialhelptutorial.tutorial.MaterialTutorialActivity;
 
 public class MainActivity extends FragmentActivity implements LoginFragment.OnFragmentInteractionListener{
     public static final int REQUEST_CODE = 1;
@@ -31,6 +32,7 @@ public class MainActivity extends FragmentActivity implements LoginFragment.OnFr
             Intent mainAct = new Intent(this, MaterialTutorialActivity.class);
             mainAct.putParcelableArrayListExtra(MaterialTutorialActivity.MATERIAL_TUTORIAL_ARG_TUTORIAL_ITEMS, getTutorialItems(this));
             startActivityForResult(mainAct, REQUEST_CODE);
+            SettingsConfig.getInstance(this).isShowGuidePage(false);
         }
 
         if(!isLogin){
@@ -66,12 +68,13 @@ public class MainActivity extends FragmentActivity implements LoginFragment.OnFr
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //    super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == REQUEST_CODE) {
-            SettingsConfig.getInstance(this).isShowGuidePage(false);
+            replaceFragment(null);
         }
     }
 
     private void replaceFragment(Fragment replaceFragment){
-        getSupportFragmentManager().beginTransaction().replace(R.id.activity_main,replaceFragment).commit();
+        //getSupportFragmentManager().beginTransaction().replace(R.id.activity_main,replaceFragment).commit();
+        startActivity(new Intent(this, WebViewActivity.class));
     }
 
     @Override

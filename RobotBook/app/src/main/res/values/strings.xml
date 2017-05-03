@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">智语未来</string>
+    <string name="app_name">小雨知时</string>
 
     <string name="slide_1_african_story_books">New African Story Books</string>
     <string name="slide_2_volunteer_professionals">Created by Volunteer Professionals</string>
@@ -26,5 +26,6 @@
     <string name="my_diary">我的日记</string>
     <string name="my_article">我的文章</string>
     <string name="my_class">班级动态</string>
-    <string name="bookcase">书架</string>
+    <string name="bookcase">作文库</string>
+    <string name="tutorial_skip">跳过</string>
 </resources>
