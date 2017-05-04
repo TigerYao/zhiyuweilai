@@ -69,7 +69,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.zhiyuweilai.tiger.robotbook.act.BaseAcitivty" />
         </activity>
-        <activity android:name=".act.WebViewActivity"/>
+        <activity android:name=".act.WebViewActivity" android:screenOrientation="landscape"/>
         </application>
 
 </manifest>
