@@ -39,8 +39,7 @@ public class WebViewActivity extends AppCompatActivity implements IWebPageView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getIntentData();
-       webbinding = DataBindingUtil.setContentView( this,R.layout.activity_web_view);
-        setTitle("详情");
+        webbinding = DataBindingUtil.setContentView( this,R.layout.activity_web_view);
         initWebView();
         webbinding.webview.loadUrl(mUrl);
     }
@@ -196,14 +195,14 @@ public class WebViewActivity extends AppCompatActivity implements IWebPageView {
 
 
 
-    /**
-     * 全屏时按返加键执行退出全屏方法
-     */
-    public void hideCustomView() {
-       // mWebChromeClient.onHideCustomView();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-    }
-
+//    /**
+//     * 全屏时按返加键执行退出全屏方法
+//     */
+//    public void hideCustomView() {
+//       // mWebChromeClient.onHideCustomView();
+//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//    }
+//
     /**
      * 上传图片之后的回调
      */
@@ -253,9 +252,9 @@ public class WebViewActivity extends AppCompatActivity implements IWebPageView {
         // 支付宝网页版在打开文章详情之后,无法点击按钮下一步
          webbinding.webview.resumeTimers();
         // 设置为横屏
-        if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
+//        if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+//            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+//        }
     }
 
     @Override

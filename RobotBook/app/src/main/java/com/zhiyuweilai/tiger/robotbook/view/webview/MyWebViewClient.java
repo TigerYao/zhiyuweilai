@@ -34,14 +34,14 @@ public class MyWebViewClient extends WebViewClient {
     @SuppressWarnings("deprecation")
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        if (!url.startsWith("intent"))
+        if (!url.startsWith("intent:"))
             view.loadUrl(url);
         else
             try {
                 IntentUtils.starIntent(view.getContext(),url);
+                return true;
             } catch (Exception e) {
                 e.printStackTrace();
-                view.loadUrl(url);
             }
 
         return false;
