@@ -33,9 +33,7 @@ public class MainActivity extends FragmentActivity implements LoginFragment.OnFr
             mainAct.putParcelableArrayListExtra(MaterialTutorialActivity.MATERIAL_TUTORIAL_ARG_TUTORIAL_ITEMS, getTutorialItems(this));
             startActivityForResult(mainAct, REQUEST_CODE);
             SettingsConfig.getInstance(this).isShowGuidePage(false);
-        }
-
-        if(!isLogin){
+        }else if(!isLogin){
             replaceFragment(LoginFragment.newInstance("",""));
         }else{
 
@@ -75,6 +73,7 @@ public class MainActivity extends FragmentActivity implements LoginFragment.OnFr
     private void replaceFragment(Fragment replaceFragment){
         //getSupportFragmentManager().beginTransaction().replace(R.id.activity_main,replaceFragment).commit();
         startActivity(new Intent(this, WebViewActivity.class));
+        finish();
     }
 
     @Override

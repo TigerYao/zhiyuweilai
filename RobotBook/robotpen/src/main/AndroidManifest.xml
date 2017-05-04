@@ -65,6 +65,7 @@
         <activity android:name="cn.robotpen.act.show.MulityWithMethodActivity" />
         <activity android:name="cn.robotpen.act.show.NoteActivity" />
         <activity android:name="cn.robotpen.act.show.ShowPointActivity"
+            android:configChanges="keyboardHidden|orientation"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="cn.robotpen.act.showpoint"></action>
